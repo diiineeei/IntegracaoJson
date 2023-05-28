@@ -24,7 +24,7 @@ func RegisterContacts(context *gin.Context) {
 		return
 	}
 
-	record := database.Instance.Create(&contact)
+	record := database.InstanceMySQL.Create(&contact)
 	if record.Error != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
 		context.Abort()

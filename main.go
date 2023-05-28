@@ -8,17 +8,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+func init() {
 	// Initialize Database
-	database.Connect("admin:admin@tcp(localhost:3306)/admin?parseTime=true")
+	database.ConnectMySQL("admin:admin@tcp(localhost:3306)/admin?parseTime=true")
+	database.ConnectPostgres("postgres://admin:admin@localhost:5432/admin")
 	database.Migrate()
-
-	// Initialize Router
-	router := initRouter()
-	router.Run(":8080")
 }
-
-func initRouter() *gin.Engine {
+func main() {
+	// Initialize Router
 	router := gin.Default()
 	api := router.Group("/api")
 	{
@@ -29,5 +26,5 @@ func initRouter() *gin.Engine {
 			secured.POST("/contact/register", controllers.RegisterContacts)
 		}
 	}
-	return router
+	router.Run(":8080")
 }

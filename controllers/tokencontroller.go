@@ -25,7 +25,7 @@ func GenerateToken(context *gin.Context) {
 	}
 
 	// check if email exists
-	record := database.Instance.Where("email = ?", request.Email).First(&user)
+	record := database.InstanceMySQL.Where("email = ?", request.Email).First(&user)
 	if record.Error != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
 		context.Abort()

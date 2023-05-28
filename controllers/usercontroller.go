@@ -22,7 +22,7 @@ func RegisterUser(context *gin.Context) {
 		return
 	}
 
-	record := database.Instance.Create(&user)
+	record := database.InstanceMySQL.Create(&user)
 	if record.Error != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
 		context.Abort()
