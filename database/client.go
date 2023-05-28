@@ -31,6 +31,6 @@ func ConnectPostgres(connectionString string) {
 
 func Migrate() {
 	InstanceMySQL.AutoMigrate(&models.Contact{}, &models.User{})
-	InstancePostgres.AutoMigrate(&models.Contact{}, &models.User{})
+	InstancePostgres.AutoMigrate(&models.Contact{})
 	log.Println("Database Migration Completed!")
 }
