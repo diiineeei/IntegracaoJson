@@ -1,6 +1,7 @@
 package database
 
 import (
+	"github.com/diiineeei/IntegracaoJson/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
@@ -19,5 +20,6 @@ func Connect(connectionString string) {
 }
 
 func Migrate() {
+	Instance.AutoMigrate(&models.User{})
 	log.Println("Database Migration Completed!")
 }
