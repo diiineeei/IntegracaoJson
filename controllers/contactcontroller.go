@@ -23,12 +23,24 @@ func RegisterContacts(context *gin.Context) {
 		context.Abort()
 		return
 	}
+	
+	contact.NormalizeContacts()
 
-	record := database.InstanceMySQL.Create(&contact)
-	if record.Error != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
-		context.Abort()
-		return
+	switch company {
+	case models.VAREJAO:
+		record := database.InstancePostgres.Create(&contact)
+		if record.Error != nil {
+			context.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
+			context.Abort()
+			return
+		}
+	case models.MACAPA:
+		record := database.InstanceMySQL.Create(&contact)
+		if record.Error != nil {
+			context.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
+			context.Abort()
+			return
+		}
 	}
 
 	context.JSON(http.StatusCreated, gin.H{"userId": contact.ID, "Name": contact.Name, "CellPhone": contact.CellPhone, "Company": contact.Company})
