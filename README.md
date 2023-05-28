@@ -25,3 +25,8 @@ Especificações do Cliente VareJão:
 - Em anexo está o sql de criação da tabela
 
 A criação de um ambiente de testes usando Docker para simular o banco de dados do cliente é altamente recomendada. A solução poderá ser desenvolvida em Golang. Fique livre para desenhar a solução da maneira que achar mais conveniente e supor qualquer cenário que não foi abordado nas especificações acima. Se, por qualquer motivo, você não consiga completar este teste, recomendamos que nos encaminhe o que foi desenvolvido de qualquer maneira. A falta de cumprimento de alguns dos requisitos aqui descritos não implica necessariamente na desconsideração do candidato.
+
+
+### Para baixar as requisições ja criadas 
+
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=IntegrationAPI&uri=https%3A%2F%2Fgithub.com%2Fdiiineeei%2FIntegracaoJson%2Fblob%2Fmain%2Ftestdata%2FIntegrationAPIV1.json)
