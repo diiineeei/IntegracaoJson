@@ -24,6 +24,7 @@ func main() {
 		secured := api.Group("/secured").Use(middlewares.Auth())
 		{
 			secured.POST("/contact/register", controllers.RegisterContacts)
+			secured.POST("/contact/register/list", controllers.RegisterContactsList)
 		}
 	}
 	router.Run(":8080")

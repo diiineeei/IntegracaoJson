@@ -70,7 +70,7 @@ func TestNormalizeVarejao(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			contact := &Contacts{
+			contact := &Contact{
 				Name:      tt.fields.Name,
 				CellPhone: tt.fields.CellPhone,
 				Company:   tt.fields.Company,

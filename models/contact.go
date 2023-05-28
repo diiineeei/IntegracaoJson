@@ -6,17 +6,21 @@ import (
 	"strings"
 )
 
-type Contacts struct {
+type Contact struct {
 	gorm.Model
 	Name      string `json:"name"`
 	CellPhone string `json:"cellphone"`
 	Company   string `json:"company"`
 }
 
+type Contacts struct {
+	Contacts []Contact `json:"contacts"`
+}
+
 const MACAPA = "macapa"
 const VAREJAO = "varejao"
 
-func (contact *Contacts) NormalizeContacts() {
+func (contact *Contact) NormalizeContacts() {
 	switch contact.Company {
 	case VAREJAO:
 		contact.CellPhone = strings.TrimSpace(contact.CellPhone)
