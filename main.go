@@ -3,6 +3,8 @@ package main
 import (
 	"github.com/diiineeei/IntegracaoJson/controllers"
 	"github.com/diiineeei/IntegracaoJson/database"
+	"github.com/diiineeei/IntegracaoJson/middlewares"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,6 +24,10 @@ func initRouter() *gin.Engine {
 	{
 		api.POST("/token", controllers.GenerateToken)
 		api.POST("/user/register", controllers.RegisterUser)
+		secured := api.Group("/secured").Use(middlewares.Auth())
+		{
+			secured.POST("/contact/register", controllers.RegisterContacts)
+		}
 	}
 	return router
 }

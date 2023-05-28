@@ -12,6 +12,7 @@ import (
 type TokenRequest struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
+	Company  string `json:"company"`
 }
 
 func GenerateToken(context *gin.Context) {
@@ -39,7 +40,7 @@ func GenerateToken(context *gin.Context) {
 		return
 	}
 
-	tokenString, err := authjwt.GenerateJWT(user.Email, user.Name)
+	tokenString, err := authjwt.GenerateJWT(user.Email, user.Name, user.Company)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		context.Abort()

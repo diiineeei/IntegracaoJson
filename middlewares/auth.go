@@ -13,7 +13,7 @@ func Auth() gin.HandlerFunc {
 			context.Abort()
 			return
 		}
-		err := authjwt.ValidateToken(tokenString)
+		_, err := authjwt.ValidateToken(tokenString)
 		if err != nil {
 			context.JSON(401, gin.H{"error": err.Error()})
 			context.Abort()
